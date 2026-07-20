@@ -51,6 +51,7 @@ layer = pdk.Layer(
     elevation_range=[0, 3000],
     extruded=True,
     coverage=1,
+    radius=100000,
 )
 
 # Set the viewport location

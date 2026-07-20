@@ -26,6 +26,8 @@ def load_data():
         usecols=use_cols,
         low_memory=False
     )
-    df["nkill"] = df["nkill"].fillna(0)
-    df["nwound"] = df["nwound"].fillna(0)
+    df["latitude"] = pd.to_numeric(df["latitude"], errors="coerce")
+    df["longitude"] = pd.to_numeric(df["longitude"], errors="coerce")
+    df["nkill"] = pd.to_numeric(df["nkill"], errors="coerce").fillna(0)
+    df["nwound"] = pd.to_numeric(df["nwound"], errors="coerce").fillna(0)
     return df
