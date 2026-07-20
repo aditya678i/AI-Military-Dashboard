@@ -15,11 +15,16 @@ def load_data():
                 shutil.copy(os.path.join(path, file), csv_path)
                 break
     
+    use_cols = [
+        'iyear', 'country_txt', 'region_txt', 'city', 'latitude', 'longitude',
+        'attacktype1_txt', 'targtype1_txt', 'weaptype1_txt', 'gname', 'nkill', 'nwound'
+    ]
+    
     df = pd.read_csv(
         csv_path,
         encoding="latin1",
-        low_memory=False,
-        nrows=15000
+        usecols=use_cols,
+        low_memory=False
     )
     df["nkill"] = df["nkill"].fillna(0)
     df["nwound"] = df["nwound"].fillna(0)
