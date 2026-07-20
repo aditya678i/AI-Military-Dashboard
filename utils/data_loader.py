@@ -1,24 +1,22 @@
+import os
 import pandas as pd
 import streamlit as st
-import os
 
 @st.cache_data
 def load_data():
-    local_path = "data/globalterrorism.csv"
+    csv_path = "data/globalterrorism.csv"
+    if not os.path.exists(csv_path):
+        import kagglehub
+        import shutil
+        path = kagglehub.dataset_download("START-UMD/gtd")
+        for file in os.listdir(path):
+            if file.endswith(".csv"):
+                os.makedirs("data", exist_ok=True)
+                shutil.copy(os.path.join(path, file), csv_path)
+                break
     
-    if not os.path.exists(local_path):
-        with st.spinner("Downloading GTD Dataset from Kaggle (First load only)..."):
-            import kagglehub
-            path = kagglehub.dataset_download("START-UMD/gtd")
-            csv_files = [f for f in os.listdir(path) if f.endswith('.csv')]
-            if csv_files:
-                local_path = os.path.join(path, csv_files[0])
-            else:
-                st.error("No CSV found in downloaded Kaggle dataset.")
-                return pd.DataFrame()
-            
     df = pd.read_csv(
-        local_path,
+        csv_path,
         encoding="latin1",
         low_memory=False
     )
