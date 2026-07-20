@@ -1,8 +1,10 @@
 import streamlit as st
 import plotly.express as px
 import pydeck as pdk
-from utils.data_loader import load_data
+
 from utils.ui_enhancer import inject_custom_css
+
+
 
 st.set_page_config(
     page_title="Country Analysis",
@@ -10,11 +12,15 @@ st.set_page_config(
     layout="wide"
 )
 
+from utils.data_loader import load_data
+df = load_data()
+
+
 inject_custom_css()
 
 st.title("🌎 Country Analysis")
 
-df = load_data()
+
 
 # -----------------------------
 # Sidebar

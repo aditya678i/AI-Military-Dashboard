@@ -5,6 +5,8 @@ import numpy as np
 import joblib
 from utils.ui_enhancer import inject_custom_css
 
+
+
 # -------------------------------
 # Page Config
 # -------------------------------
@@ -13,6 +15,10 @@ st.set_page_config(
     page_icon="🤖",
     layout="wide"
 )
+
+from utils.data_loader import load_data
+df = load_data()
+
 
 inject_custom_css()
 
@@ -36,7 +42,7 @@ target_encoder = joblib.load(
 # Load Dataset
 # -------------------------
 
-df = pd.read_csv("data/globalterrorism.csv", encoding="latin1", low_memory=False, nrows=15000)
+
 
 # -------------------------
 # Remove Missing Values

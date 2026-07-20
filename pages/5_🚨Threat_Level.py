@@ -8,6 +8,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 from sklearn.ensemble import RandomForestClassifier
 
+
+
 # -------------------------------
 # Page Config
 # -------------------------------
@@ -17,6 +19,10 @@ st.set_page_config(
     layout="wide"
 )
 
+from utils.data_loader import load_data
+df = load_data()
+
+
 inject_custom_css()
 
 st.title("🚨 AI Threat Level Prediction System")
@@ -24,7 +30,7 @@ st.title("🚨 AI Threat Level Prediction System")
 # -------------------------------
 # Load Dataset
 # -------------------------------
-df = pd.read_csv("data/globalterrorism.csv", encoding="latin1", low_memory=False, nrows=15000)
+
 
 df = df[[
     "country_txt",

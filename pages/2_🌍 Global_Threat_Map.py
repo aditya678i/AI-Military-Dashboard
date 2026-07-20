@@ -1,7 +1,9 @@
 import streamlit as st
 import pydeck as pdk
-from utils.data_loader import load_data
+
 from utils.ui_enhancer import inject_custom_css
+
+
 
 st.set_page_config(
     page_title="Global Threat Map",
@@ -9,11 +11,15 @@ st.set_page_config(
     layout="wide"
 )
 
+from utils.data_loader import load_data
+df = load_data()
+
+
 inject_custom_css()
 
 st.title("🌍 3D Global Threat Map")
 
-df = load_data()
+
 
 st.sidebar.header("Filters")
 

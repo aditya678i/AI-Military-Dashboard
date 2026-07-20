@@ -2,6 +2,8 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 
+
+
 # -------------------------------------------------
 # Page Configuration
 # -------------------------------------------------
@@ -11,6 +13,10 @@ st.set_page_config(
     page_icon="🧠",
     layout="wide"
 )
+
+from utils.data_loader import load_data
+df = load_data()
+
 
 st.title("🧠 AI Intelligence Report")
 
@@ -23,15 +29,10 @@ Global Terrorism Database (GTD).
 # Load Dataset
 # -------------------------------------------------
 
-@st.cache_data
-def load_data():
-
-    df = pd.read_csv("data/globalterrorism.csv", encoding="latin1", low_memory=False, nrows=15000)
-
-    return df
 
 
-df = load_data()
+
+
 
 # -------------------------------------------------
 # Sidebar Filters

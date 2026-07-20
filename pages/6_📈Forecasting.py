@@ -5,6 +5,8 @@ import plotly.graph_objects as go
 
 from sklearn.linear_model import LinearRegression
 
+
+
 # ----------------------------------------------------
 # Page Configuration
 # ----------------------------------------------------
@@ -13,6 +15,10 @@ st.set_page_config(
     page_icon="📈",
     layout="wide"
 )
+
+from utils.data_loader import load_data
+df = load_data()
+
 
 st.title("📈 Terrorism Attack Forecasting")
 
@@ -23,12 +29,9 @@ Forecast the future number of terrorist attacks using historical GTD data.
 # ----------------------------------------------------
 # Load Dataset
 # ----------------------------------------------------
-@st.cache_data
-def load_data():
-    df = pd.read_csv("data/globalterrorism.csv", encoding="latin1", low_memory=False, nrows=15000)
-    return df
 
-df = load_data()
+
+
 
 # ----------------------------------------------------
 # Sidebar Filters

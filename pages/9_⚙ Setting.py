@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
 
+
+
 # ----------------------------------------
 # Page Configuration
 # ----------------------------------------
@@ -10,6 +12,10 @@ st.set_page_config(
     page_icon="⚙️",
     layout="wide"
 )
+
+from utils.data_loader import load_data
+df = load_data()
+
 
 st.title("⚙️ Dashboard Settings")
 
@@ -195,7 +201,7 @@ st.header("📊 Dataset Information")
 
 try:
 
-    df = pd.read_csv("data/globalterrorism.csv", encoding="latin1", low_memory=False, nrows=15000)
+    
 
     st.success("Dataset Loaded Successfully")
 

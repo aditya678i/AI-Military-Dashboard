@@ -1,7 +1,13 @@
 import streamlit as st
 import plotly.express as px
-from utils.data_loader import load_data
+
 from utils.ui_enhancer import inject_custom_css
+
+from utils.data_loader import load_data
+df = load_data()
+
+
+
 
 inject_custom_css()
 
@@ -13,7 +19,7 @@ st.markdown("""
 **College:** GLA University, Mathura
 """)
 
-df = load_data()
+
 
 st.subheader("Dashboard Summary")
 
