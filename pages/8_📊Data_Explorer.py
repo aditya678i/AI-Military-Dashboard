@@ -22,11 +22,7 @@ st.markdown("Explore, filter, visualize and download the GTD dataset.")
 
 @st.cache_data
 def load_data():
-    df = pd.read_csv(
-        "data/globalterrorism.csv",
-        encoding="latin1",
-        low_memory=False
-    )
+    df = pd.read_csv("data/globalterrorism.csv", encoding="latin1", low_memory=False, nrows=15000)
     return df
 
 df = load_data()

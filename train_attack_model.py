@@ -22,12 +22,7 @@ os.makedirs("models", exist_ok=True)
 
 print("Loading GTD Dataset...")
 
-df = pd.read_csv(
-    "data/globalterrorism.zip",
-    compression="zip",
-    encoding="latin1",
-    low_memory=False
-)
+df = pd.read_csv("data/globalterrorism.csv", encoding="latin1", low_memory=False, nrows=15000)
 
 print(df.shape)
 
@@ -120,7 +115,7 @@ print("Training Model...")
 
 model = RandomForestClassifier(
 
-    n_estimators=50,
+    n_estimators=300,
     random_state=42,
     n_jobs=-1
 
@@ -203,24 +198,21 @@ print(
 joblib.dump(
 
     model,
-    "models/attack_prediction_model.pkl",
-    compress=3
+    "models/attack_prediction_model.pkl"
 
 )
 
 joblib.dump(
 
     target_encoder,
-    "models/target_encoder.pkl",
-    compress=3
+    "models/target_encoder.pkl"
 
 )
 
 joblib.dump(
 
     encoders,
-    "models/feature_encoders.pkl",
-    compress=3
+    "models/feature_encoders.pkl"
 
 )
 

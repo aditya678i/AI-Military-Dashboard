@@ -195,11 +195,7 @@ st.header("📊 Dataset Information")
 
 try:
 
-    df = pd.read_csv(
-        "data/globalterrorism.csv",
-        encoding="latin1",
-        low_memory=False
-    )
+    df = pd.read_csv("data/globalterrorism.csv", encoding="latin1", low_memory=False, nrows=15000)
 
     st.success("Dataset Loaded Successfully")
 

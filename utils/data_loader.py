@@ -18,7 +18,8 @@ def load_data():
     df = pd.read_csv(
         csv_path,
         encoding="latin1",
-        low_memory=False
+        low_memory=False,
+        nrows=15000
     )
     df["nkill"] = df["nkill"].fillna(0)
     df["nwound"] = df["nwound"].fillna(0)

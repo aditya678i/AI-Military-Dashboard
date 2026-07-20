@@ -24,11 +24,7 @@ st.title("🚨 AI Threat Level Prediction System")
 # -------------------------------
 # Load Dataset
 # -------------------------------
-df = pd.read_csv(
-    "data/globalterrorism.csv",
-    encoding="latin1",
-    low_memory=False
-)
+df = pd.read_csv("data/globalterrorism.csv", encoding="latin1", low_memory=False, nrows=15000)
 
 df = df[[
     "country_txt",
